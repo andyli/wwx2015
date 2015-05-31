@@ -1,0 +1,22 @@
+version: "{build}"
+
+environment:
+    global:
+        HAXELIB_ROOT: C:\projects\haxelib
+
+install:
+    # Install the haxe chocolatey package (https://chocolatey.org/packages/haxe)
+    - cinst haxe -version 3.2.0 -y
+    - RefreshEnv
+    # Setup haxelib
+    - mkdir "%HAXELIB_ROOT%"
+    - haxelib setup "%HAXELIB_ROOT%"
+
+# We don't use the build section, but do both build and 
+# test in `test_script:`.
+# It is just because it is more similar to the TravisCI config,
+# thus it would be easier to update both of them.
+build: off
+
+test_script:
+  - haxe build.hxml
