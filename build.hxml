@@ -1,0 +1,4 @@
+-neko Main.n
+-cp src
+-main Main
+-cmd neko Main.n
